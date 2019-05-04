@@ -21,22 +21,23 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
+        /*RegistersUsersはﾄﾚｲﾄで、いくつかの ﾒｿｯﾄﾞをまとめたもの*/
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';    //ﾕｰｻﾞｰ登録後のﾘﾀﾞｲﾚｸﾄ先をindexに
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+     // Laravel におけるﾐﾄﾞﾙｳｪｱは Controller にｱｸｾｽする前に事前に確認される条件 
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest');     //gestである必要がある
     }
 
     /**
