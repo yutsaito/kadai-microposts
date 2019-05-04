@@ -21,23 +21,20 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-        /*RegistersUsersはﾄﾚｲﾄで、いくつかの ﾒｿｯﾄﾞをまとめたもの*/
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/';    //ﾕｰｻﾞｰ登録後のﾘﾀﾞｲﾚｸﾄ先をindexに
-
+    protected $redirectTo = '/';
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-     // Laravel におけるﾐﾄﾞﾙｳｪｱは Controller にｱｸｾｽする前に事前に確認される条件 
     public function __construct()
     {
-        $this->middleware('guest');     //gestである必要がある
+        $this->middleware('guest');
     }
 
     /**
@@ -49,10 +46,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+        ]);;
     }
 
     /**
