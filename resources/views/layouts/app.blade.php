@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE <html>  <!-- 共通ﾚｲｱｳﾄ -->
 <html lang="ja">
     <head>
         <meta charset="utf-8">
@@ -9,7 +9,7 @@
 
     <body>
 
-        @include('commons.navbar')
+            @include('commons.navbar')
         
         <div class="container">
             @include('commons.error_messages')
