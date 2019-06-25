@@ -18,7 +18,19 @@
                         {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
-                    @endif
+                     @endif
+                    {{--
+                             @if (Auth::user()->is_favoring($micropost->id))
+                                    {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+                                        {!! Form::submit('unfavotite', ['class' => "btn btn-danger btn-sm"]) !!}
+                                    {!! Form::close() !!}
+                             @else
+                                    {!! Form::open(['route' => ['favorites.favorite', $micropost->id], 'method' => 'post']) !!}
+                                        {!! Form::submit('favorite', ['class' => "btn btn-primary btn-sm"]) !!}
+                                    {!! Form::close() !!}
+                             @endif
+                    --}}                    
+                    @include('micropost_favorite.favorite_button', ['micropost' => $micropost])                    
                 </div>
             </div>
         </li>

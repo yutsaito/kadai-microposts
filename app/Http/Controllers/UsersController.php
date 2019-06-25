@@ -61,5 +61,28 @@ class UsersController extends Controller
         return view('users.followers', $data);
     }
     
-    
+    //これはnavtabs.blade,php から、Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite'); で
+    //FavoritesController@store
+    public function favorites($id){
+
+        $user = User::find($id);
+                //$favorites = $user->favorites()->paginate(10);
+        $microposts = $user->favorites()->paginate(10);
+        $data = [
+            'user' => $user,
+                    //'favorites' => $favorites,
+            'microposts' => $microposts,
+        ]; 
+        
+        $data += $this->counts($user);  //thisがfavorite()このメソッド
+        
+                //echo($user);
+                //dd($user);
+                //echo($microposts);
+                //dd($microposts);
+                //dd($microposts->toArray());  //配列はこっちで確認する、ということらしい
+                //echo は文字列や数値などの単一データしか出力できないので、dd()を使うと良いですよ。
+        
+        return view('users.favorites', $data);
+    }
 }
